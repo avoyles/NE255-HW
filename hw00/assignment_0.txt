@@ -1,0 +1,36 @@
+Local Practice...
+
+
+1) Name: Andrew Voyles
+   Assignment: 0
+   Date: 09 September 2016
+
+2) "Nesting" git repos is bad practice, as subdirectories of a repo can be added (for the subdirectory ./foo/bar, if ./foo is a git repo, "git add ./foo/bar/*" will add the directory ./foo/bar and all of its contents to the ./foo repo). In addition, nesting creates many possible conflict scenarios, as both the ./planets/moons repo and the ./moons repo each have their own version history. 
+
+The last "git init" (to the ./planets/moons repo) can be undone by deleting the repo itself:
+
+$ rmdir ./planets/moons/.git/
+
+
+3)  Screenshot attached.
+
+
+4) #5 is the correct answer, for recovering the most recent commit of data_cruncher.py.
+
+
+5) Nothing to do in this part, as far as I can tell...
+
+
+6) My "planets" repo is hosted at: https://github.com/ubermenschen/planets
+   
+   GitHub records timestamps based on the time when the "$ git push origin master" command (or comparable) is used to push from your local repo to the remote. Since the remote is designed to be the "central" repo in a collaboration, to which collaborators can push/pull, this allows for  consistent timekeeping of the work performed by different collaborators. 
+   
+   
+   
+Remote Practice...
+   
+1) Repo is hosted at https://github.com/ubermenschen/rachel-planets
+
+
+2) Version control can be used for keeping output from code synced with the version of code used to produce said output.
+   figshare is a thing! A thing which I will be using...
