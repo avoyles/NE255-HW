@@ -494,118 +494,43 @@ we developed in class (eqns. 19-21), calculate the external source for $\ell$ = 
 
 (5 points) What are the major nuclear data libraries and which countries manage them?
 
-\begin{enumerate}[(a)] 
-
-\item  Briefly describe what each term in the Transport Equation physically
-represents.
-
-
-
 
 \subsection{Solution}
     
-   
-\begin{enumerate}[A)] 
-
-\item Time rate of change of the neutron angular flux, the change in the neutron angular flux for an energy group  over the entire volume, as a function of time.. 
-
-\item Streaming losses, the rate at which neutrons exit the control volume.
-
-\item Total interaction losses, the rate at which neutrons are absorbed or outscattered from an energy and solid angle group.
-
-\item External source gains, the rate at which neutrons enter the system, or from a generic point/line/distributed/etc source (other than fission) in the system.
-
-\item Inscattering source gains, the rate at which neutrons are scattered into an energy and solid angle group.
-
-\item Fission source gain, the rate at which neutrons are born through fission, into a particular energy group.
-
-
-\end{enumerate}
-
-   
-   
-\item   Rewrite the time independent form of the equation to include azimuthal
-symmetry. Show the steps needed to get there.
-
-
-\subsection{Solution}
+  A large number of these nuclear data libraries currently exist, each of which serve a specific purpose within the global nuclear data community.
+  
+  
+  At the most fundamental level, nuclear data consists of the various input parameters used in structure and reaction evaluation codes. Since computational tools are currently incapable of describing single nuclei at the microscopic level of a many-nucleon wavefunction, bulk nuclear properties and data are instead modeled using a parameterized model of spherical or deformed nuclei, whose parameters are determined via fitting to experimental measurements of these properties. Once best-fit input parameters are determined, they can be used as predictive and evaluation tools. The primary fundamental libraries are the Reference Input Parameter Library (RIPL), which collects nuclear masses, discrete nuclear levels, neutron resonances, nuclear optical model parameters, nuclear level densities, and photon resonances, and  the Evaluated Gamma-ray Activation File (EGAF), which collects nuclear level densities, level parities, and radiative strength functions. Both of these libraries are maintained by the IAEA.
+  
+  
+  Stepping up one level of application are the experimental libraries, which act as a stepping stone between experimental publications and the evaluated libraries. When researchers publish experimental measurements of nuclear data, the authors are able to compile their results into an experimental library. These libraries provide \enquote{bleeding-edge} nuclear data measurements for the nuclear community, but also serve as the inputs used in the periodic evaluation updates of the various evaluated data libraries. The experimental libraries include the Experimental Unevaluated Nuclear Data List (XUNDL), which collects experimental nuclear structure and decay data, and the Experimental Nuclear Reaction Data Library (EXFOR/CSISRS), which collects experimental nuclear reaction data. Both of these libraries are maintained by the US Nuclear Data Program, under the auspices of the National Nuclear Data Center (NNDC).
+  
+  
+  The next step in the nuclear data community is the evaluation process, which collects the compiled experimental data in XUNDL/EXFOR and assigns recommended values for the data. This involves a review of the experimental methods used in each publication, as well as using the different evaluation codes to verify that the recommended values agree with nuclear theoretical models, as well as to weed out any poorly-designed experiments which may have produced inaccurate data. These evaluations thus produce the \enquote{best} statistically recommended values for all measured nuclear data, as well as statistical covariances in measurement uncertainties. These libraries include  the Evaluated Nuclear Structure Data File (ENSDF), which is a nuclear structure and decay library evaluated from the XUNDL library using the  EMPIRE\footnote{\url{  http://www.nndc.bnl.gov/empire/}} evaluation code, and the Evaluated Nuclear Data File (ENDF), a nuclear reaction data library evaluated from the EXFOR library using the  EMPIRE evaluation code. Both of these libraries are maintained by the US Nuclear Data Program, under the auspices of the National Nuclear Data Center (NNDC). Other evaluated libraries include:
+  
+  \begin{itemize}
     
-   The first step is to make the time-independent assumption:
-   
-   \begin{equation}
-\pderiv{\psi}{t} = 0
-\end{equation}
 
-This also removes all time dependence terms:
-   
-   
-   \begin{equation}
-\begin{split}
- \omvec\cdot  \nabla \psi(\rvec,E,\omvec) + \Sigma_t(\rvec,E)\psi(\rvec,E,\omvec)  &= S(\rvec, E, \omvec) 
-\\
-&+\int_0^{\infty}\int_{4\pi}\Sigma_s(\rvec, E'\rightarrow E,\omvec'\rightarrow\omvec) \psi(\rvec,E',\omvec')d\omvec'dE'
-\\
-& +\frac{\chi_p(E)}{4\pi}\int_0^{\infty}\int_{4\pi}\nu(E')\Sigma_f(\rvec,E') \psi(\rvec,E',\omvec')d\omvec'dE'
-\end{split}
-\end{equation}
-
- For the azimuthal symmetry assumption, scattering is only a function of \(\mu =\vOmega' \cdot \vOmega\), the cosine of the scattering angle. This gives us the  simplifications:
- 
-\(d\vOmega = \sin(\theta) d\theta d\varphi = d\mu d\varphi; \quad \mu = \cos(\theta);$  $d\mu = \sin(\theta)d\theta\:.\)
-\begin{align}
-\int_{4 \pi} d\vOmega &= \int_0^{2\pi} d\varphi \int_{-\pi/2}^{\pi/2} \sin(\theta) d\theta =  \int_0^{2\pi} d\varphi \int_{-1}^1 d\mu = 4\pi \\
-\psi(\rvec,\vOmega,E) d\vOmega &= \psi(\rvec,\varphi, \mu,E) d\varphi  d\mu =  \psi(\rvec, \mu,E) d\varphi  d\mu 
-\end{align}
-
-The scattering cross section is no longer dependent on \(\varphi\):
-
-\begin{equation}
-\Sigma_s(\rvec, \vOmega' \rightarrow \vOmega) \rightarrow \Sigma_s(\rvec, \vOmega' \cdot \vOmega) = \Sigma_s(\rvec, \mu) 
-\end{equation}
+  
+  \item the TALYS-based Evaluated Nuclear Data Library (TENDL), an IAEA-maintained nuclear reaction data library evaluated directly from experimental publications using the   TALYS\footnote{\url{http://www.talys.eu/}}  evaluation code, 
+  
+  \item the  Joint Evaluated Fission and Fusion File (JEFF), an evaluated library of nuclear reactions, decay data, and fission yields maintained by the Nuclear Energy Agency Data Bank member countries\footnote{Austria,	Germany	,	Mexico	,	Slovak Republic,	Belgium	,	Greece	,	Netherlands	,	Slovenia,	Czech Republic	 ,	Hungary	,	Norway	,	Spain
+,	Denmark	,	Italy	,	Poland	,Sweden
+,	Finland	,	Japan	,	Portugal	,	Switzerland
+,	France	,Republic of Korea ,	Russia	,	Turkey,	 	 	United Kingdom}, which is evaluated using the TALYS and ALICE\footnote{\url{https://rsicc.ornl.gov/codes/psr/psr1/psr-146.html}} codes,
 
 
+  \item the Japanese Evaluated Nuclear Data Library (JENDL), an evaluated  neutron reaction data library, maintained by Japan,
+  
+  \item the Bruyeres-le-chatel Discrete Level Library (BRC), a defense-oriented evaluated neutron data library, maintained by the French Alternative Energies and Atomic Energy Commission (CEA) ,
+  
+  \item the Karlsruhe Nuclear Data Library (KEDAK), a primarily low-energy neutron resonance evaluated library. This library was maintained by Germany, but has since been absorbed into JEFF and WLUP (see below).
+  
+    \end{itemize}
 
-Thus,
-
-\begin{equation}
-\int_{4 \pi} d\vOmega\: \psi(\rvec, \vOmega, E) =   \int_0^{2\pi} d\varphi \int_{-1}^1 d\mu \:\psi(\rvec, \vOmega, E) = 2 \pi \int_{-1}^1 d\mu \:\psi(\rvec, \mu, E)
-\end{equation}
-
-Finally, the fission term can now be written in terms of the scalar flux:
-
-\begin{equation}
-\begin{split}
-\frac{\chi_p(E)}{4\pi}\int_0^{\infty}\int_{4\pi}\nu(E')\Sigma_f(\rvec,E') \psi(\rvec,E',\omvec')d\omvec'dE' &=
- \frac{\chi_p(E)}{4\pi}\int_0^{\infty}\nu(E')\Sigma_f(\rvec,E') dE'  \int_{4\pi} \psi(\rvec,E',\omvec')d\omvec'
-\\
-&= \frac{\chi(E)}{2} \int_0^{\infty} dE'\:  \nu(E')\Sigma_f(\rvec,E')\phi(\rvec, E')
-\end{split}
-\end{equation}
-
-Combining these all together:
-
- 
-   \begin{equation}
-\begin{split}
- \mu\cdot  \nabla \psi(\rvec,E,\mu) + \Sigma_t(\rvec,E)\psi(\rvec,E,\mu)  &= S(\rvec, E, \mu) 
-\\
-&+ 2\pi\int_0^{\infty}dE' \int_{-1}^1\Sigma_s(\rvec, E'\rightarrow E,\mu') \psi(\rvec,E',\mu')d\mu'
-\\
-& +\frac{\chi(E)}{2} \int_0^{\infty} dE'\:  \nu(E')\Sigma_f(\rvec,E')\phi(\rvec, E')
-\end{split}
-\end{equation}
-
-
-% \begin{figure}[H]
-%  \centering
-%  \includegraphics{./hw02_04a.pdf}
-%  % hw02_03a.pdf: 204x92 pixel, 72dpi, 7.20x3.25 cm, bb=0 0 204 92
-% \end{figure}
-% 
-
-
-    \end{enumerate}
-    
+  
+  All of the evaluated libraries listed up to this point are compilations of fundamental nuclear parameters: nuclear levels, widths, lifetimes, transition elements, and the like, leading up to cross-sections as the highest-level piece of data. While these fundamental parameters are important, they are often too low-level for many applications and calculations. As a result, there exist many application-specific libraries, which report the relevant pieces of nuclear data for specific scenarios, in units convenient to those applications. While there are a multitude of these libraries, two important ones are addressed here.  Nuclear Structure and Decay Data (NuDat) is a compiled library which reads from ENSDF, and reports all of the decay radiation (with relative intensities, branching ratios, coincidence peaks, and level transition elements), along with basic properties of radioactive nuclei: half-lives, Q-values, decay schemes, nucleon separation energies, and the like. These are all presented in a simple and user-friendly web format useful for calculations, and are maintained by the NNDC.  The Medical Internal Radiation Dose (MIRD) library is another nuclear decay library maintained by the NNDC, which lists NuDat decay data, in terms of the dose associated with various decay radiations. These are useful for dose planning, radiation shielding calculations, and other situations where human dose is considered. The International Reactor Dosimetry and Fusion File (IRDFF) is an IAEA-maintained library of medical isotope production cross sections and excitation functions, charged particle beam monitor reaction data, and dosimetry standards. The WIMS[Winfrith Improved Multigroup Scheme-D] Library Update Project (WLUP) is an IAEA-maintained library of neutron multigroup evaluated cross sections, and is one the only open-source libraries of this data, which is often commercial / closed-source, due to their value in reactor lattice transport calculations.
+  
  
 
 \end{homeworkProblem}

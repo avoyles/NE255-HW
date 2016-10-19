@@ -126,8 +126,8 @@ continued on next page\ldots}\nobreak{}
 %   - Author
 %
 
-\newcommand{\hmwkTitle}{Homework\ \# 02}
-\newcommand{\hmwkDueDate}{04 October 2016}
+\newcommand{\hmwkTitle}{Homework\ \# 03}
+\newcommand{\hmwkDueDate}{18 October 2016}
 \newcommand{\hmwkClass}{NE 255}
 \newcommand{\hmwkClassInstructor}{Professor Rachel Slaybaugh}
 \newcommand{\hmwkAuthorName}{Andrew S Voyles}
@@ -249,7 +249,7 @@ elit.}
 
 \begin{homeworkProblem}
 
- Derive the 1st order form of $SP_5$ with isotropic source and vacuum boundary
+ (20 points)  Derive the 1st order form of $SP_5$ with isotropic source and vacuum boundary
 conditions.
 
 
@@ -273,7 +273,7 @@ Consider the integral
 \int_{4\pi} d\omvec \left|\omvec\right|
 \end{equation}
 
-The LQ$_N$ quadrature set is given in XXX. Recall that $\mu_i = \eta_i = \xi_i$ for a given level, $i$.
+The LQ$_N$ quadrature set is given in \autoref{fig:LQquad}. Recall that $\mu_i = \eta_i = \xi_i$ for a given level, $i$.
 
 \begin{figure}[H]
  \centering
@@ -286,9 +286,7 @@ The LQ$_N$ quadrature set is given in XXX. Recall that $\mu_i = \eta_i = \xi_i$ 
 
 \begin{enumerate}[(a)] 
 
-\item  Look up the Top 10 supercomputing list and briefly describe the architecture
-of the top three machines. List the number of machines of each type on the
-top 10 (e.g. X are GPU-accelerated, Y contain MICs, etc.)
+\item  (5 points)  Use the $S_4$ LQ$_N$ quadrature set to execute this integral.
 
 
 
@@ -296,43 +294,27 @@ top 10 (e.g. X are GPU-accelerated, Y contain MICs, etc.)
 
 \subsection{Solution}
     
-  According to the Top500 project\footnote{\url{https://www.top500.org/}}, the top three machines (ranked in terms of peak achieved floating-point-operations per second, FLOPS) are the Sunway TaihuLight, the TH-2, and Titan:
-  
-  The Sunway TaihuLight is at the \#1 spot on the Top500 list, and is a  93 PFLOP supercomputer in Wuxi, China, which first came online in June 2016. It uses 40,960 SW26010 processors clocked at 1.45 GHz, each of which contains 256 processing cores, for a total of 10,649,600 cores across the cluster. These are custom many-core processors using the RISC architecture, which eschews  typical cache structure for inter-core communication for a dedicated network between core clusters, which greatly improves the parallel efficiency of the cores. The machine is supported by 1.3 PBytes of RAM, and consumes approximately 15 MW of power. The machine runs on Sunway RaiseOS, a custom high-performance computing Linux distribution.  
-  
-  The Tianhe-2 is at the \#2 spot on the Top500 list, and is a  34 PFLOP supercomputer in Guangzhou, China, which first came online in June 2013. It uses 16,000 computing nodes, each of which contains two Intel Xeon E5-2692 12-core CPUs running at 2.2 GHz supported by 64 GB of RAM, and three Xeon Phi 31S1P co-processors, which contain 57 cores running at 1.1 GHz, supported by 8 GB of RAM. This is a combined 3,120,000 processing cores and 1.34 PBytes of RAM across the system, which consumes 17.6 MW of power.  The machine runs on Kylin, a custom high-performance computing Linux distribution.  
-  
-   Titan is at the \#3 spot on the Top500 list, and is a  17 PFLOP supercomputer Oak Ridge National Lab, in Oak Ridge, Tennessee, which first came online in October 2012. It uses 18,688 computing nodes, each of which contains one AMD Opteron 6274 16-core CPU running at 2.2 GHz supported by 32 GB of RAM, and one  Nvidia Tesla K20X GPU, which contains 2688 CUDA cores running at 732 MHz, supported by 6 GB of RAM. This is a combined 50,532,352 processing cores and 694 TBytes of RAM across the system, which consumes 8.2 MW of power.
-   
-   In this top 10 list, 6 computers (Sunway TaihuLight, Sequoia, Mira, Trinity, Hazel Hen, Shaheen II)  use massively multi-core custom primary CPUs as an architecture, 2 computers (Titan, Piz Daint) are GPU-accelerated,  1 computer (Tianhe-2 ) uses MICs / co-processors, and 1 computer (K-Computer) uses an alternative customs CPU architectures. 
+  XXXXXXXXXXXXXXXXXXXXXX
  
    
-\item   Describe the main characteristics of GPUs, MICs (multi integrated
-cores), and CPUs-memory, clock speed, structure, etc.
+\item    (10 points) Repeat it with $S_6$. What do you observe?
 
 
 
 
 \subsection{Solution}
     
-   The CPU is the heart of a computer, the primary integrated circuit responsible for computation. The CPU receives instructions from some compiled binary code, decodes these instructions into a series of electrical commands, and then electrically connects its internal transistors, to perform the requested computation or operation.  CPUs have small memory buffers called \emph{caches}, which are responsible for holding commands, outputs, and memory addresses, as well as facilitating data I/O between the CPU and the motherboard, which have sizes on the order of a few MB in modern CPUs.
+  XXXXXXXXXXXXXXXXXX
    
-   The commands read and executed by a CPU are measured in \emph{clock cycles}, a unit of time used to regulate the operation of the CPU. Clock cycles can be used to measure the time required to complete the electrical operation involved in reading in binary instructions, decoding them, and executing the requested operation. Each operation consists of multiple instruction signals, so the more clock cycles that a CPU can execute per unit time, the more operations it is capable of performing per unit time. Clock speed, the number of clock cycles per second, is measured in Hz, and is a common measure of the internal processing speed of a CPU.
-   
-   A co-processor or multi-integrated core (MIC) is a sort of secondary processor, which is always paired with at least one primary CPU in a computing node. This design greatly accelerates computation by offloading intense and parallelizable sections of computation from the primary CPUs (which are optimized for several large serial tasks, due to their high clock speed) to the multiple cores in the co-processor, each of which are optimized for small, independent tasks, due to their lower clock speed. This allows a MIC to split a long serial computation into a very short parallel operation, assuming that the code is capable of being translated into an algorithm supporting parallel operation, such as finite element analysis.
-   
-   A GPU (graphical processing unit) is another type of processor, very similar in design to a MIC. Like a MIC, GPUs are processors comprised of hundreds to thousands of slower-clock speed cores, each of which has its own memory buffer. Traditionally, GPUs are used generate computer images and video, a process which is extremely demanding on the CPU. By moving these processes to a separate processor, the GPU, the CPU is freed up to focus on more intensive serial operations. Since the process of rendering these graphics is a naturally parallel task, the many small GPU cores turn a very CPU-intensive process into a much more trivial parallel task. To handle all of the data used during these parallel tasks, most modern GPUs have their own dedicated memory, on the order of several to tens of GB.
-   
-   \item Based on what we've talked about so far, postulate challenges of solving
-the neutron transport equation in a way that would work on all of these architectures.
+   \item (10 points) Write a short code to execute this integration (and higher orders if
+you'd like). Try a few different functions. Turn in the code and the evaluation of
+these functions. Include comments on what you observe.
 
 
 
 \subsection{Solution}
     
-   We have discussed the two primary computational solution methods: deterministic methods, which discretize a large problem into multiple small elements, each of which is solved analytically. These problems are often hard to perform in parallel, but are well-suited to solution using many high-clock speed CPUs, and are easily executed on multi-core supercomputers. Due to the nature of matrix diagonalization, many of these finite-element methods are now being ported to parallel computation, however.
-   
-   Monte Carlo methods, on the other hand, use random sampling of events in a probability distribution to look at aggregate behavior of systems. In neutron transport, we can simulate the lifetime and interactions of a single neutron as it is transported through a volume. By performing this for many (\(\gg 10^8\)) neutrons, we can solve the NTE for neutron fluxes in various volumes by building up a statistically significant number of particle histories. Since each particle is transported independently, these Monte Carlo problems are very well-suited to parallel computation, and are frequently  performed on MIC and GPU-accelerated machines.
+  XXXXXXXXXXXXXXXXX
 
 
 \end{enumerate}
@@ -344,150 +326,31 @@ the neutron transport equation in a way that would work on all of these architec
 
 \begin{homeworkProblem}
 
-We often measure convergence by comparing one iteration to the previous
-iteration (rather than the solution, since we presumably don't know what it is). Imagine
-that you have software that gives the following solution vectors:
-
-% \begin{figure}[H]
-%  \centering
-%  \includegraphics{./hw02_03a.pdf}
-%  % hw02_03a.pdf: 204x92 pixel, 72dpi, 7.20x3.25 cm, bb=0 0 204 92
-% \end{figure}
-
-
-Calculate:
-
 
 
 
 \begin{enumerate}[(a)] 
 
-\item The absolute and relative error using the 1 norm.
+\item (5 points) Briefly compare the diffusion equation, deterministic methods, and monte
+carlo methods in terms of complexity, accuracy, run time, and range of applicability.
 
 
 
 
 \subsection{Solution}
 
-For some vector \xvec, the \(\ell_1\) norm is calculated as:
-
-\begin{equation}
- \norm{ \xvec }_1 = \sum_{i=1}^N \left| x_i \right|
-\end{equation}
-
-For some norm \(\norm{\cdot}\), we will define the absolute error between solution vectors \(x_n\) and \(x_{n-1}\) as:
-
-\begin{equation}
-\epsilon_A = \norm{x_n-x_{n-1}}
-\end{equation}
-
-Similarly, the relative error is:
-
-\begin{equation}
-\epsilon_R = \dfrac{ \norm{x_n-x_{n-1}}}{ \norm{x_n}} = \dfrac{ \epsilon_A}{ \norm{x_n}}
-\end{equation}
-
-Using these definitions and the  \(\ell_1\) norm:
-
-\begin{equation}
-\epsilon_A = \sum \pp{0.05, 0.05, 0.1, 0.05, 0.1  }^T = 0.35
-\end{equation}
-
-\begin{equation}
-\epsilon_R = \dfrac{0.35}{ \sum \pp{0.5, 0.9, 0.3, 0.1, 0.5  }^T} = 0.1522
-\end{equation}
+XXXXXXXXXXXXXXXXXXXXXXXX
  
    
-\item   The absolute and relative error using the 2 norm
+\item  (5 points) Given what you've learned about deterministic methods so far, discuss
+strengths and weaknesses.
 
 
 
 
 \subsection{Solution}
 
-   
-For some vector \xvec, the \(\ell_2\) norm is calculated as:
-
-\begin{equation}
- \norm{ \xvec }_2 = \sqrt{\sum_{i=1}^N  x_i^2  }
-\end{equation}
-   
-   
-   
-Using these definitions:
-
-\begin{equation}
-\epsilon_A = \sqrt{\sum \pp{0.0025, 0.0025, 0.01, 0.0025, 0.01 }^T} = 0.1658
-\end{equation}
-
-\begin{equation}
-\epsilon_R = \dfrac{0.1658}{\sqrt{\sum \pp{0.25, 0.81, 0.09, 0.01, 0.25 }^T}} = 0.1397
-\end{equation}
-   
-   
-\item The absolute and relative error using the infinity norm.
-
-What is most restrictive (that is, what would cause the code to converge first)?
-
-Image that now \(x_{n-1} = (0.49, 0.92, 0.4, -0.09, 0.51)^T\). Recalculate the convergence values.
-
-What do you observe? What does that mean about how you might select convergence
-criteria?
-
-
-
-
-\subsection{Solution}
-
-  
-For some vector \xvec, the \(\ell_\infty\) norm is calculated as:
-
-\begin{equation}
- \norm{ \xvec }_\infty = \max_{1 \leq i \leq N} \left| x_i \right|
-\end{equation}
-   
-   
-   
-Using these definitions:
-
-\begin{equation}
-\epsilon_A = \max \pp{0.05, 0.05, 0.1, 0.05, 0.1 }^T = 0.1
-\end{equation}
-
-\begin{equation}
-\epsilon_R = \dfrac{0.1}{\max \pp{0.5, 0.9, 0.3, 0.1, 0.5  }^T} = 0.111
-\end{equation}
-   
-   
-\begin{table}[H]
-\centering
-\caption{Tabulated results for the various error criteria.}
-\label{tab:firstx}
-\begin{tabular}{c|c|c}
- Norm    & \(\epsilon_A\)     & \(\epsilon_R\)     \\ \hline
-\(\ell_1\)   & 0.35   & 0.1522 \\
-\(\ell_2\)   & 0.1658 & 0.1397 \\
-\(\ell_\infty\) & 0.1    & 0.1111
-\end{tabular}
-\end{table}   
-
-These results can be seen tabulated in \autoref{tab:firstx}. For most iterative methods, when the true solution is unknown, iteration continues until the error between two subsequent iterations falls below a set threshold. This leaves us with two ways to interpret convergence speed in the context of this problem. Since the \(\ell_\infty\) norm has the smallest of both the absolute and relative errors, it would predict that the two solution vectors are the closest to convergence, i.e., it would be the first to converge starting at the current timestep, assuming that the iterative method employed has monotonically decreasing errors between iterations. A second interpretation would be to look at the \(\ell_1\) norm, which has the largest of  both the absolute and relative errors. Many iterative solvers would see this as being \enquote{far} away from convergence, and take either a larger time step, or iterate more aggressively towards the solution, potentially reaching convergence first, at the risk of overshooting due to the \enquote{bang-bang} nature of aggressive iteration.
-
-Repeating our analysis for the second \(x_{n-1}\) vector (with calculations not listed here for clarity, but verified in the \texttt{hw02\_03.m} script included in the parent repo), we see the results tabulated in \autoref{tab:firstx2}. Through inspection of these results, we that while the absolute errors have decreased in magnitude somewhat significantly from before, the relative errors have decreased by a smaller magnitude. Since the new \(x_{n-1}\) vector was closer to \(x_n\) than the old \(x_{n-1}\) vector, this illustrates why relative errors are typically used as convergence tolerances, as they normalize the scale of an error to its nominal value. 
-
-It is also very important to point out that the \(\ell_\infty\) norms do not change at all for our new \(x_{n-1}\) vector. This is because , unlike the \(\ell_1\) and \(\ell_2\)  norms which look at the contributions of all errors between a pair of solution vectors, the \(\ell_\infty\)  only looks at the magnitude of the largest error contribution. While this can provide some stability against overshoot/undershoot by only focusing on minimizing the most significant error, it  ignores changes in the larger solution space, which can be used to give more feedback about one's proximity to convergence.
-
-\begin{table}[H]
-\centering
-\caption{Tabulated results for the various error criteria, using the new \(x_{n-1}\).}
-\label{tab:firstx2}
-\begin{tabular}{c|c|c}
- Norm    & \(\epsilon_A\)     & \(\epsilon_R\)     \\ \hline
-\(\ell_1\)   & 0.15   & 0.0652 \\
-\(\ell_2\)   & 0.1034 & 0.0871 \\
-\(\ell_\infty\) & 0.1    & 0.1111
-\end{tabular}
-\end{table}   
+   XXXXXXXXXXXXXXXXXXXXXXXXXXXXx
    
 
 \end{enumerate}
@@ -530,7 +393,7 @@ XXXXXXXXXXXXXXXXXX
 
    
    
-\item   Now, we will approximate the external source. Using the $S_4$ quadrature
+\item (20 points)    Now, we will approximate the external source. Using the $S_4$ quadrature
 to do the integrations and $q_e$ = 1 for all angles: use the equations for external source
 we developed in class (eqns. 19-21), calculate the external source for $\ell$ = 0, 1, 2.
 
@@ -629,130 +492,48 @@ we developed in class (eqns. 19-21), calculate the external source for $\ell$ = 
 
 \begin{homeworkProblem}
 
-Consider the transport equation: 
-
-\begin{align}
-&\underbrace{\frac{1}{v}\frac{\partial \psi}{\partial t}(\rvec,E,\omvec,t)}_{\text{A}} + \underbrace{\omvec\cdot  \nabla \psi(\rvec,E,\omvec,t)}_{\text{B}} + \underbrace{\Sigma_t(\rvec,E)\psi(\rvec,E,\omvec,t) }_{\text{C}} = \underbrace{S(\rvec, E, \omvec,t)}_{\text{D}} \nonumber.
-\\& \quad\quad\quad\quad  \underbrace{\int_0^{\infty}\int_{4\pi}\Sigma_s(\rvec, E'\rightarrow E,\omvec'\rightarrow\omvec) \psi(\rvec,E',\omvec',t)d\omvec'dE'}_{\text{E}}\nonumber
-\\&\quad\quad\quad\quad\quad\quad +\underbrace{\frac{\chi_p(E)}{4\pi}\int_0^{\infty}\int_{4\pi}\nu(E')\Sigma_f(\rvec,E') \psi(\rvec,E',\omvec',t)d\omvec'dE'}_{\text{F}}\nonumber
-\\&\quad\quad\quad\quad\quad\quad\quad\quad
-\end{align}
-
-
-
-
-\begin{enumerate}[(a)] 
-
-\item  Briefly describe what each term in the Transport Equation physically
-represents.
-
-
+(5 points) What are the major nuclear data libraries and which countries manage them?
 
 
 \subsection{Solution}
     
-   
-\begin{enumerate}[A)] 
-
-\item Time rate of change of the neutron angular flux, the change in the neutron angular flux for an energy group  over the entire volume, as a function of time.. 
-
-\item Streaming losses, the rate at which neutrons exit the control volume.
-
-\item Total interaction losses, the rate at which neutrons are absorbed or outscattered from an energy and solid angle group.
-
-\item External source gains, the rate at which neutrons enter the system, or from a generic point/line/distributed/etc source (other than fission) in the system.
-
-\item Inscattering source gains, the rate at which neutrons are scattered into an energy and solid angle group.
-
-\item Fission source gain, the rate at which neutrons are born through fission, into a particular energy group.
-
-
-\end{enumerate}
-
-   
-   
-\item   Rewrite the time independent form of the equation to include azimuthal
-symmetry. Show the steps needed to get there.
-
-
-\subsection{Solution}
+  A large number of these nuclear data libraries currently exist, each of which serve a specific purpose within the global nuclear data community.
+  
+  
+  At the most fundamental level, nuclear data consists of the various input parameters used in structure and reaction evaluation codes. Since computational tools are currently incapable of describing single nuclei at the microscopic level of a many-nucleon wavefunction, bulk nuclear properties and data are instead modeled using a parameterized model of spherical or deformed nuclei, whose parameters are determined via fitting to experimental measurements of these properties. Once best-fit input parameters are determined, they can be used as predictive and evaluation tools. The primary fundamental libraries are the Reference Input Parameter Library (RIPL), which collects nuclear masses, discrete nuclear levels, neutron resonances, nuclear optical model parameters, nuclear level densities, and photon resonances, and  the Evaluated Gamma-ray Activation File (EGAF), which collects nuclear level densities, level parities, and radiative strength functions. Both of these libraries are maintained by the IAEA.
+  
+  
+  Stepping up one level of application are the experimental libraries, which act as a stepping stone between experimental publications and the evaluated libraries. When researchers publish experimental measurements of nuclear data, the authors are able to compile their results into an experimental library. These libraries provide \enquote{bleeding-edge} nuclear data measurements for the nuclear community, but also serve as the inputs used in the periodic evaluation updates of the various evaluated data libraries. The experimental libraries include the Experimental Unevaluated Nuclear Data List (XUNDL), which collects experimental nuclear structure and decay data, and the Experimental Nuclear Reaction Data Library (EXFOR/CSISRS), which collects experimental nuclear reaction data. Both of these libraries are maintained by the US Nuclear Data Program, under the auspices of the National Nuclear Data Center (NNDC).
+  
+  
+  The next step in the nuclear data community is the evaluation process, which collects the compiled experimental data in XUNDL/EXFOR and assigns recommended values for the data. This involves a review of the experimental methods used in each publication, as well as using the different evaluation codes to verify that the recommended values agree with nuclear theoretical models, as well as to weed out any poorly-designed experiments which may have produced inaccurate data. These evaluations thus produce the \enquote{best} statistically recommended values for all measured nuclear data, as well as statistical covariances in measurement uncertainties. These libraries include  the Evaluated Nuclear Structure Data File (ENSDF), which is a nuclear structure and decay library evaluated from the XUNDL library using the  EMPIRE\footnote{\url{  http://www.nndc.bnl.gov/empire/}} evaluation code, and the Evaluated Nuclear Data File (ENDF), a nuclear reaction data library evaluated from the EXFOR library using the  EMPIRE evaluation code. Both of these libraries are maintained by the US Nuclear Data Program, under the auspices of the National Nuclear Data Center (NNDC). Other evaluated libraries include:
+  
+  \begin{itemize}
     
-   The first step is to make the time-independent assumption:
-   
-   \begin{equation}
-\pderiv{\psi}{t} = 0
-\end{equation}
 
-This also removes all time dependence terms:
-   
-   
-   \begin{equation}
-\begin{split}
- \omvec\cdot  \nabla \psi(\rvec,E,\omvec) + \Sigma_t(\rvec,E)\psi(\rvec,E,\omvec)  &= S(\rvec, E, \omvec) 
-\\
-&+\int_0^{\infty}\int_{4\pi}\Sigma_s(\rvec, E'\rightarrow E,\omvec'\rightarrow\omvec) \psi(\rvec,E',\omvec')d\omvec'dE'
-\\
-& +\frac{\chi_p(E)}{4\pi}\int_0^{\infty}\int_{4\pi}\nu(E')\Sigma_f(\rvec,E') \psi(\rvec,E',\omvec')d\omvec'dE'
-\end{split}
-\end{equation}
-
- For the azimuthal symmetry assumption, scattering is only a function of \(\mu =\vOmega' \cdot \vOmega\), the cosine of the scattering angle. This gives us the  simplifications:
- 
-\(d\vOmega = \sin(\theta) d\theta d\varphi = d\mu d\varphi; \quad \mu = \cos(\theta);$  $d\mu = \sin(\theta)d\theta\:.\)
-\begin{align}
-\int_{4 \pi} d\vOmega &= \int_0^{2\pi} d\varphi \int_{-\pi/2}^{\pi/2} \sin(\theta) d\theta =  \int_0^{2\pi} d\varphi \int_{-1}^1 d\mu = 4\pi \\
-\psi(\rvec,\vOmega,E) d\vOmega &= \psi(\rvec,\varphi, \mu,E) d\varphi  d\mu =  \psi(\rvec, \mu,E) d\varphi  d\mu 
-\end{align}
-
-The scattering cross section is no longer dependent on \(\varphi\):
-
-\begin{equation}
-\Sigma_s(\rvec, \vOmega' \rightarrow \vOmega) \rightarrow \Sigma_s(\rvec, \vOmega' \cdot \vOmega) = \Sigma_s(\rvec, \mu) 
-\end{equation}
+  
+  \item the TALYS-based Evaluated Nuclear Data Library (TENDL), an IAEA-maintained nuclear reaction data library evaluated directly from experimental publications using the   TALYS\footnote{\url{http://www.talys.eu/}}  evaluation code, 
+  
+  \item the  Joint Evaluated Fission and Fusion File (JEFF), an evaluated library of nuclear reactions, decay data, and fission yields maintained by the Nuclear Energy Agency Data Bank member countries\footnote{Austria,	Germany	,	Mexico	,	Slovak Republic,	Belgium	,	Greece	,	Netherlands	,	Slovenia,	Czech Republic	 ,	Hungary	,	Norway	,	Spain
+,	Denmark	,	Italy	,	Poland	,Sweden
+,	Finland	,	Japan	,	Portugal	,	Switzerland
+,	France	,Republic of Korea ,	Russia	,	Turkey,	 	 	United Kingdom}, which is evaluated using the TALYS and ALICE\footnote{\url{https://rsicc.ornl.gov/codes/psr/psr1/psr-146.html}} codes,
 
 
+  \item the Japanese Evaluated Nuclear Data Library (JENDL), an evaluated  neutron reaction data library, maintained by Japan,
+  
+  \item the Bruyeres-le-chatel Discrete Level Library (BRC), a defense-oriented evaluated neutron data library, maintained by the French Alternative Energies and Atomic Energy Commission (CEA) ,
+  
+  \item the Karlsruhe Nuclear Data Library (KEDAK), a primarily low-energy neutron resonance evaluated library. This library was maintained by Germany, but has since been absorbed into JEFF and WLUP (see below).
+  
+    \end{itemize}
 
-Thus,
-
-\begin{equation}
-\int_{4 \pi} d\vOmega\: \psi(\rvec, \vOmega, E) =   \int_0^{2\pi} d\varphi \int_{-1}^1 d\mu \:\psi(\rvec, \vOmega, E) = 2 \pi \int_{-1}^1 d\mu \:\psi(\rvec, \mu, E)
-\end{equation}
-
-Finally, the fission term can now be written in terms of the scalar flux:
-
-\begin{equation}
-\begin{split}
-\frac{\chi_p(E)}{4\pi}\int_0^{\infty}\int_{4\pi}\nu(E')\Sigma_f(\rvec,E') \psi(\rvec,E',\omvec')d\omvec'dE' &=
- \frac{\chi_p(E)}{4\pi}\int_0^{\infty}\nu(E')\Sigma_f(\rvec,E') dE'  \int_{4\pi} \psi(\rvec,E',\omvec')d\omvec'
-\\
-&= \frac{\chi(E)}{2} \int_0^{\infty} dE'\:  \nu(E')\Sigma_f(\rvec,E')\phi(\rvec, E')
-\end{split}
-\end{equation}
-
-Combining these all together:
-
- 
-   \begin{equation}
-\begin{split}
- \mu\cdot  \nabla \psi(\rvec,E,\mu) + \Sigma_t(\rvec,E)\psi(\rvec,E,\mu)  &= S(\rvec, E, \mu) 
-\\
-&+ 2\pi\int_0^{\infty}dE' \int_{-1}^1\Sigma_s(\rvec, E'\rightarrow E,\mu') \psi(\rvec,E',\mu')d\mu'
-\\
-& +\frac{\chi(E)}{2} \int_0^{\infty} dE'\:  \nu(E')\Sigma_f(\rvec,E')\phi(\rvec, E')
-\end{split}
-\end{equation}
-
-
-% \begin{figure}[H]
-%  \centering
-%  \includegraphics{./hw02_04a.pdf}
-%  % hw02_03a.pdf: 204x92 pixel, 72dpi, 7.20x3.25 cm, bb=0 0 204 92
-% \end{figure}
-% 
-
-
-    \end{enumerate}
-    
+  
+  All of the libraries listed up to this point are compilations of fundamental nuclear parameters: nuclear levels, widths, lifetimes, transition elements, and the like, leading up to cross-sections as the highest-level piece of data. While these fundamental parameters are important, they are often too low-level for many applications and calculations. As a result, there exist many application-specific libraries, which report the relevant pieces of nuclear data for specific scenarios, in units convenient to those applications. While there are a multitude of these libraries, two important ones are addressed here.  Nuclear Structure and Decay Data (NuDat) is a compiled library which reads from ENSDF, and reports 
+  
+  The Medical Internal Radiation Dose (MIRD) library is a 
+  WLUP
+  
  
 
 \end{homeworkProblem}
